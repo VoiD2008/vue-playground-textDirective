@@ -40,6 +40,8 @@ const sysText = {
                 // если передан аргумент v-test:argument="bindingvalue"
                 // поищем по id элемента
                 node = elem.querySelector(`#${binding.arg}`);
+            } else {
+                node = elem;
             }
         } else {
             //если слоты есть
@@ -79,7 +81,7 @@ const sysText = {
                         }
                     );
                     //запомним добавляемые элементы для последующего удаления
-                    const tempArray = elem._tempNodes[binding.arg||'_default'] = Array.from(temp.children);
+                    const tempArray = elem._tempNodes[binding.arg||'_default'] = Array.from(temp.childNodes);
                     if (node.anchor.previousElementSibling){
                         // если перед слотом есть элемент добавим после него
                         node.anchor.previousElementSibling.after(...tempArray);
